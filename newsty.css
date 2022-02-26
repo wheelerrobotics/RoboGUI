@@ -32,8 +32,17 @@ body {
     margin: 1%;
     font-weight: bold;
     color: black;
+    white-space: pre
+}
+.code > button {
+    position: absolute;
+    width: 10%;
+    height: 5%;
+    top: 0%;
+    right: 0%;
 }
 .notes {
+    width: 30%;
     position: absolute;
     bottom: 0%;
     right: 0%;
@@ -102,6 +111,10 @@ body {
 .move > .params > .param {
     display: flex;
     flex-direction: row;
+    margin: 1%;
+}
+.move > .params > .param > * {
+    margin-inline: 1%;
 }
 .move > .params > .param > input[type='number'][class='special']{
     background-color: transparent;

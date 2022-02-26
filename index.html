@@ -13,24 +13,29 @@
         <h1>Title Goes Here</h1>
         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum placeat, doloribus deleniti saepe alias repellat consectetur recusandae beatae id qui harum accusantium. Quo maxime, aspernatur sit odio animi temporibus porro.</p>
     </div>
+    <p onclick="this.innerHTML = 'HELLO\nWORLD'"> crats</p>
 
     <div id="moves-window" class="move-container">
         
         
     </div>
     <div class="new-move">
-        <button onclick="newMoveButton(this.parentElement)">+</button>
-        <input type="text" placeholder="title">
-        <select>
-            <option>line</option>
-            <option>turn</option>
-            <option>arm</option>
-            <option>claw</option>
-            <option>spinner</option>
-            <option>delay</option>
-        </select>
+        <form class="new-move" onsubmit="return false">
+            <button onclick="newMoveButton(this.parentElement)">+</button>
+            <input type="text" placeholder="title">
+            <select>
+                <option>line</option>
+                <option>turn</option>
+                <option>arm</option>
+                <option>claw</option>
+                <option>spinner</option>
+                <option>delay</option>
+            </select>
+        </form>
+        
     </div>
     <div class="code">
+        <button onclick="copyString(this.parentElement.querySelector('p').innerHTML, this)">copy</button>
         <p id="the-code">
         
         </p>

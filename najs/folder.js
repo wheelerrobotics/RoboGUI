@@ -132,11 +132,16 @@ function addMove(movetype, title){
     downButton.setAttribute("onclick", "switchOrder(this.parentElement.parentElement.parentElement, -1)")
     downButton.innerHTML = "down"
 
+    let delButton = document.createElement('button')
+    delButton.innerHTML = "-"
+    delButton.setAttribute('onclick', 'deleteMove(this.parentElement.parentElement)')
+
     orderDiv.appendChild(upButton)
     orderDiv.appendChild(downButton)
 
     titleDiv.appendChild(titleHeader)
     titleDiv.appendChild(foldButton)
+    titleDiv.appendChild(delButton)
     titleDiv.appendChild(orderDiv)
     
     let paramsDiv = document.createElement('div')
@@ -389,7 +394,7 @@ function compileCode(){
     for(let m of moveWindow){
         let data = JSON.parse(m.getElementsByClassName('data')[0].innerHTML)
         let movetype = data.type
-        
+        let lbreak = "\n"
         let direction,speed,degrees,distance,close
         switch (movetype) {
             case MoveTypes.LINE:
@@ -397,34 +402,34 @@ function compileCode(){
                 direction = data.direction.toString().charAt(0).toUpperCase() + data.direction.substring(1).toLowerCase();
                 speed = data.speed.toString()
                 distance = data.distance.toString()
-                theCode += "<br>meccanum.motorDrive" + direction + "Encoded(" + speed + ", " + distance + "); <br>"
+                theCode += lbreak+"meccanum.motorDrive" + direction + "Encoded(" + speed + ", " + distance + "); "+lbreak
                 break;
             case MoveTypes.TURN:
                 if(!data.speed || !data.degrees) break;
                 degrees = (direction == 'right' ? -data.degrees : data.degrees).toString()
                 speed = data.speed.toString();
-                theCode += "<br>meccanum.turnDeg(" + degrees + ", " + speed + ", telemetry); <br>"
+                theCode += lbreak+"meccanum.turnDeg(" + degrees + ", " + speed + ", telemetry); "+lbreak
                 break;
             case MoveTypes.CLAW:
                 if(!data['open/close']) break;
-                theCode += (data['open/close'] == 'open' ? '<br>meccanum.openServoFull(); <br>':'<br>meccanum.closeServoFull(); <br>')
+                theCode += (data['open/close'] == 'open' ? lbreak+'meccanum.openServoFull(); '+lbreak: lbreak+'meccanum.closeServoFull(); '+lbreak)
                 break;
             case MoveTypes.SPINNER:
                 if(!data.time || !data.speed) break;
                 time = data.time.toString()
                 speed = (data['red/blue'] == 'red' ? -data.speed : data.speed).toString();
-                theCode += "<br>meccanum.spinnySpinTime(" + speed + ", " + time + "); <br>"
+                theCode += lbreak+"meccanum.spinnySpinTime(" + speed + ", " + time + "); "+lbreak
                 break;
             case MoveTypes.DELAY:
                 if(!data.time) break;
                 time = data.time.toString()
-                theCode += "delay(" + time + "); <br>"
+                theCode += "delay(" + time + "); "+lbreak
                 break;
             case MoveTypes.ARM:
                 if(!data.time || !data.speed) break;
                 time = data.time.toString()
                 speed = data.speed.toString()
-                theCode += "<br>meccanum.moveArmTime(" + speed + ", " + time + "); <br>"
+                theCode += lbreak+"meccanum.moveArmTime(" + speed + ", " + time + "); "+lbreak
                 break;
         }
     }
@@ -448,6 +453,26 @@ function changedParam(params){
     }
     console.log(data)
     move.getElementsByClassName('data')[0].innerHTML = JSON.stringify(data)
+}
+function deleteMove(move){
+    let data = JSON.parse(move.getElementsByClassName('data')[0].innerHTML)
+    document.getElementById('moves-window').removeChild(move)
+    for(let m of document.getElementsByClassName('move')){
+        if(m.style.order>data.order){
+            console.log(m.style.order)
+            m.style.order = parseInt(m.style.order) -1
+            console.log(m.style.order)
+        }
+    }
+}
+function copyString(string, spam){
+        navigator.clipboard.writeText(string).then(function() {
+          spam.innerHTML = 'copied';
+          window.setTimeout(()=>{spam.innerHTML = 'copy'}, 2000)
+        }, function() {
+          dispError("clipboard copy failed", "this is likely a browser compatibility issue (your fault, not mine!)")
+        });
+      
 }
 window.setInterval(updateDataOrder, 40)
 window.setInterval(compileCode, 40)
