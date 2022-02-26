@@ -1,0 +1,133 @@
+* > p {
+    font-family: monospace;
+}
+* {
+    outline: none;
+}
+body {
+    background-color: rgb(94, 94, 94);
+}
+#err{
+    background-color: rgb(77, 77, 77);
+    border: solid 4px firebrick;
+    position: absolute;
+    right: 0%;
+    opacity: 1;
+}
+#err > h1 {
+    font-size: 20pt;
+}
+.code{
+    position: absolute;
+    background-color: tan;
+    border: 6px solid black;
+    overflow: scroll;
+    white-space: nowrap;
+    top: 10%;
+    left: 40.5%;
+    width: 57.5%;
+    height: 83%;
+}
+.code > p {
+    margin: 1%;
+    font-weight: bold;
+    color: black;
+}
+.notes {
+    position: absolute;
+    bottom: 0%;
+    right: 0%;
+}
+.notes > button {
+    position: absolute;
+    bottom: 0%;
+    right: 0%;
+}
+.notes > div{
+    background-color: rgb(63, 63, 63);
+    border: 4px rgb(23, 48, 16) solid;
+}
+.notes > div > p {
+    font-weight: bolder;
+    color: lightgray;
+    text-decoration: bold;
+    margin: 6%;
+}
+.new-move {
+    display: flex;
+    flex-direction: row-reverse;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.new-move > button {
+    background-color: aquamarine;
+}
+.move{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(16, 184, 128);
+}
+.title {
+    display: flex;
+    flex-direction: row;
+    margin: 1%;
+}
+.title > h1{
+    font-family: monospace;
+    font-size: 15pt;
+    margin: 0%;
+}
+.title > button{
+    font-family: monospace;
+    background-color: darkgray;
+    border: none;
+    outline: none;
+    color: gray;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 1%;
+}
+.title > button:active{
+    background-color: rgb(155, 155, 155);
+}
+.move-container > .move {
+    border: 3px solid rgb(22, 58, 28);
+    margin: 1%;
+}
+.move > .params {
+    margin: 1%;
+    border: 2px cadetblue solid;
+}
+.move > .params > .param {
+    display: flex;
+    flex-direction: row;
+}
+.move > .params > .param > input[type='number'][class='special']{
+    background-color: transparent;
+    border: none;
+}
+.move > .params > .name-change > p {
+    margin: 0%;
+    font-size: 7pt;
+    cursor: pointer;
+}
+.move > .params > .name-change > .hidden-rename {
+    flex-direction: row;
+}
+.move > .params > .name-change > .hidden-rename > p {
+    margin: 0%;
+}
+.param > p{
+    margin: 0;
+}
+.move-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 39%;
+    height: 860px;
+    background-color: gray;
+    border: solid black 4px;
+    overflow-y: scroll;
+}

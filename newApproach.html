@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./newsty.css" rel="stylesheet">
+    <title>Chillin</title>
+</head>
+<body>
+    <div id="err" hidden>
+        <h1>Title Goes Here</h1>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum placeat, doloribus deleniti saepe alias repellat consectetur recusandae beatae id qui harum accusantium. Quo maxime, aspernatur sit odio animi temporibus porro.</p>
+    </div>
+
+    <div id="moves-window" class="move-container">
+        
+        
+    </div>
+    <div class="new-move">
+        <button onclick="newMoveButton(this.parentElement)">+</button>
+        <input type="text" placeholder="title">
+        <select>
+            <option>line</option>
+            <option>turn</option>
+            <option>arm</option>
+            <option>claw</option>
+            <option>spinner</option>
+            <option>delay</option>
+        </select>
+    </div>
+    <div class="code">
+        <p id="the-code">
+        
+        </p>
+    </div>
+    <div class="notes">
+        <div>
+            <p hidden>  
+                heres some useful consts from the meccanum file <br>
+                <br>
+                public static int TICKS_IN_FOOT = 333; <br>
+                public static double SIDEWAYS_TICKS_IN_FOOT = 235; <br>
+                <br>
+                public final double NORMAL_SPEED = 0.2; <br>
+                public final double SERVO_FULLY_CLOSED = 0.0; <br>
+                public final double SERVO_FULLY_OPENED = 0.5; <br>
+                public final double HALF_SERVO_ANGLE = 0.5; <br>
+                public final double BACK_SERVO_ANGLE = Math.PI; <br>
+                public final double ARM_MAX_SPEED = -   0.5; <br>
+                public final double HIGH_SPINNER_POWER = 1; <br>
+                public final double OPTIMAL_SPINNER_POWER = 0.5; <br>
+                public final double MOTOR_STOP = 0; <br>
+                public final double SPIN_MOTORS_SPEED = 0.3; <br>
+            </p>
+        </div>
+        <button onclick="this.parentElement.getElementsByTagName('p')[0].hidden = !this.parentElement.getElementsByTagName('p')[0].hidden">useful info</button>
+    </div>
+    <script src="najs/folder.js"></script>
+    <script src="najs/MoveTypes.js"></script>
+    <script>
+        
+    </script>
+</body>
+</html>
