@@ -144,3 +144,26 @@ body {
     border: solid black 4px;
     overflow-y: scroll;
 }
+media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .move-container{
+    width: 98%;
+  }
+  .code {
+    dislapy: none;
+  }
+  .notes{
+    width: 90%;
+  }
+  .mobile-copy > button {
+    display: block;
+  }
+  .mobile-copy{
+    position: absolute;
+    left: 0%;
+    bottom: 0%;
+  }
+  
+}
+
+
