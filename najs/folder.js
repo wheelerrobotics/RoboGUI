@@ -389,7 +389,14 @@ function newMoveButton(paren){
 
 }
 function compileCode(){
-    let moveWindow = document.getElementsByClassName('move')
+    let order = 0;
+    let moveWindow = []
+    while (true){
+        if(document.querySelector('div[style*="order: ' + order + ';"]')) moveWindow.push(document.querySelector('div[style*="order: ' + order + ';"]'))
+        else break;
+        order++
+    }
+    
     let theCode = ""
     for(let m of moveWindow){
         let data = JSON.parse(m.getElementsByClassName('data')[0].innerHTML)
